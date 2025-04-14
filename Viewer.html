@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Viewer</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+  <script>
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+    
+    window.onload = function() {
+      const productCode = getQueryParam('code');
+      if (productCode) {
+        // Adjusted to load "13685_V215.html" (for example)
+        const productUrl = productCode + '.html';
+        document.getElementById('productFrame').src = productUrl;
+      } else {
+        document.body.innerHTML = '<p>No product code provided in the URL.</p>';
+      }
+    }
+  </script>
+</head>
+<body>
+  <iframe id="productFrame"></iframe>
+</body>
+</html>
